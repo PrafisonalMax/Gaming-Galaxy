@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Best Games 2025/2026</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="logo">🎮 Gaming Galaxy</div>
+
+      <button
+        type="button"
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="menu menu--desktop" aria-label="Main">
+        <button type="button" id="searchBtn">Search</button>
+        <button type="button" id="signinBtn">Sign in</button>
+        <button type="button" id="settingsBtn">Settings</button>
+      </nav>
+    </header>
+
+    <div id="mobileMenuBackdrop" class="mobile-menu-backdrop hidden" aria-hidden="true"></div>
+
+    <!-- Mobile-only drawer (small screens) -->
+    <div id="mobileMenu" class="mobile-menu hidden" aria-hidden="true">
+      <button type="button" id="mobileSearchBtn">Search</button>
+      <button type="button" id="mobileSigninBtn">Sign in</button>
+      <button type="button" id="mobileSettingsBtn">Settings</button>
+      <button type="button" class="mobile-menu-close" id="closeMobileMenu">Close</button>
+    </div>
+
+    <!-- SEARCH -->
+    <div id="searchBox" class="search-box hidden">
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="Search games by title or genre…"
+        autocomplete="off"
+      />
+    </div>
+
+    <!-- SIGN IN MODAL -->
+    <div id="signinModal" class="modal hidden">
+      <div class="modal-content">
+        <h2>Sign In</h2>
+        <input type="text" placeholder="Username" />
+        <input type="password" placeholder="Password" />
+        <button type="button">Login</button>
+        <button type="button" id="closeSignin">Close</button>
+      </div>
+    </div>
+
+    <!-- SETTINGS (overlay — dark mode friendly) -->
+    <div id="settingsOverlay" class="settings-overlay hidden" aria-hidden="true">
+      <div id="settingsPanel" class="settings-panel" role="dialog" aria-labelledby="settingsTitle">
+        <button type="button" class="settings-close" id="closeSettings" aria-label="Close settings">×</button>
+        <p id="settingsTitle">⚙️ Settings</p>
+        <button type="button" class="settings-action-btn" id="darkModeBtn">Toggle Dark Mode</button>
+
+      <div class="settings-field">
+        <label for="maxPrice">Max Price ($)</label>
+        <input type="number" id="maxPrice" placeholder="e.g. 60" min="0" />
+      </div>
+
+      <div class="settings-field">
+        <label for="minRating">Minimum Rating</label>
+        <input
+          type="number"
+          id="minRating"
+          step="0.1"
+          min="0"
+          max="10"
+          placeholder="e.g. 8.5"
+        />
+        <small>Only applies when using a RAWG API key (see config.example.js).</small>
+      </div>
+
+      <div class="settings-field">
+        <label for="platform">Platform</label>
+        <select id="platform">
+          <option value="">Any</option>
+          <option value="PC">PC</option>
+          <option value="PS5">PS5</option>
+          <option value="Xbox">Xbox</option>
+        </select>
+      </div>
+
+      <label class="settings-check">
+        <input type="checkbox" id="animationsToggle" />
+        Enable Animations
+      </label>
+
+      <div class="settings-field">
+        <label for="fontSize">Font Size</label>
+        <select id="fontSize">
+          <option value="small">Small</option>
+          <option value="normal">Normal</option>
+          <option value="large">Large</option>
+        </select>
+      </div>
+
+      <div class="settings-field">
+        <label for="themeColor">Theme Color</label>
+        <select id="themeColor">
+          <option value="red">Red</option>
+          <option value="blue">Blue</option>
+          <option value="green">Green</option>
+        </select>
+      </div>
+
+      <button type="button" class="settings-action-btn" id="resetSettings">Reset Settings</button>
+      </div>
+    </div>
+
+    <main>
+      <section class="hero">
+        <h1>Best Games of 2025 / 2026</h1>
+        <p>Discover top-rated and upcoming games across all platforms</p>
+        <a href="explore.html" class="hero-link">
+          <span class="primary-btn">Explore All Games</span>
+        </a>
+      </section>
+
+      <section class="top-games">
+        <h2>🔥 Top 10 Recommended Games</h2>
+        <p class="section-hint">
+          Loaded live from the internet. Use Search or Settings to narrow the list.
+        </p>
+        <div class="games-grid"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>🎮 Gaming Galaxy</h3>
+          <p>Your site for discovering games online.</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="explore.html">Explore</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="https://www.freetogame.com" target="_blank" rel="noopener">Game data source</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Gaming Galaxy. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Optional: copy config.example.js → config.js and add RAWG key -->
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+    <script src="ui.js"></script>
+    <script src="home.js"></script>
+  </body>
+</html>
